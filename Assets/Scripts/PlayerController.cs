@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour
 {
     public InputSystem_Actions inputs;
     private CharacterController controller;
-    public float moveSpeed = 5f;
+    public float moveSpeed = 1f;
     public float rotationSpeed = 200f;
     public float verticalVelocity;
     public float jumpForce = 10;
@@ -41,10 +41,10 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        OnMove();
-        //OnSimpleMove();
+        //OnMove();
+        OnSimpleMove();
     }
-    public void OnMove()
+    /*public void OnMove()
     {
         transform.Rotate(Vector3.up * moveInput.x * rotationSpeed * Time.deltaTime);
         Vector3 moveDir = transform.forward * moveSpeed * moveInput.y;
@@ -66,7 +66,7 @@ public class PlayerController : MonoBehaviour
         controller.Move(moveDir * Time.deltaTime);
 
 
-    }
+    }*/
     private void OnJump(InputAction.CallbackContext Context)
     {
         if (!controller.isGrounded) return;

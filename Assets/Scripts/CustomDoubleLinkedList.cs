@@ -11,7 +11,7 @@ public class CustomDoubleLinkedList : DoubleLinkedList<SnapshotNode>
 
         if (pointer == tail)
         {
-            SnapshotNode snapshot = new SnapshotNode(GameManager.instance.player, Count);
+            SnapshotNode snapshot = new SnapshotNode(GameManager.instance.player, Count,GameManager.instance.GrupoEnemy);
             base.Add(snapshot);
             ResetPointer();
         }
@@ -23,7 +23,7 @@ public class CustomDoubleLinkedList : DoubleLinkedList<SnapshotNode>
         else
         {
             RemoveFromPosition(pointer);
-            SnapshotNode snapshot = new SnapshotNode(GameManager.instance.player, Count);
+            SnapshotNode snapshot = new SnapshotNode(GameManager.instance.player, Count,GameManager.instance.GrupoEnemy);
             base.Add(snapshot);
             ResetPointer();
         }
@@ -53,11 +53,12 @@ public class CustomDoubleLinkedList : DoubleLinkedList<SnapshotNode>
     public void LoadTurn(Player player)
     {
         Debug.Log("Cargando el turno: " + pointer.Value.Turn);
+        //Player
         player.transform.position = pointer.Value.playerPosition;
         player.transform.eulerAngles = pointer.Value.playerRotation;
-        player.str = pointer.Value.str;
-        player.dtx = pointer.Value.dtx;
-        player.spd = pointer.Value.spd;
+        player.fuerza = pointer.Value.fuerza;
+        player.vida = pointer.Value.vida;
+        //Enemy
 
     }
 

@@ -6,12 +6,13 @@ using System.Collections.Generic;
 
 public class GameManager : MonoBehaviour
 {
+    public UIturnos text;
     public static GameManager instance;
 
     public CustomDoubleLinkedList snapshotSystem = new();
 
     public Player player;
-
+    public NodeEnemy GrupoEnemy;
 
     private void Awake()
     {
@@ -27,11 +28,16 @@ public class GameManager : MonoBehaviour
     {
         snapshotSystem.SaveTurn();
         Debug.Log("Saving turn: " + snapshotSystem.Count);
+        text.ActText(snapshotSystem.Count);
+
+        player.canMove = true;
+        //enemy.OnMove();
+        //enemy.canMove = true;
     }
-    //[Button]
     public void LoadTurn()
     {
         snapshotSystem.LoadTurn(player);
+        player.canMove = true;
     }
     [Button]
     public void NextTurn()
